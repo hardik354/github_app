@@ -17,7 +17,10 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
+
+console.log("dir", __dirname);
+
 
 app.use(session({ secret: "keyboard cat", resave: false, saveUninitialized: false }));
 // Initialize Passport!  Also use passport.session() middleware, to support
@@ -29,19 +32,16 @@ app.use(cors({
   credentials: true
 }));
 
-app.get("/", (req, res) => {
-  res.send("server is ready ");
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/explore", exploreRoutes);
 
-// app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-// app.get("*", (req, res) => {
-// 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-// });
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
