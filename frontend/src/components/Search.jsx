@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
-
+import React from "react";
 const Search = ({ onSearch }) => {
     const [username, setUsername] = useState("");
 

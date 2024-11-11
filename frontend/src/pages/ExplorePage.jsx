@@ -2,7 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 import Repos from "../components/Repos";
-
+import React from "react";
 
 const ExplorePage = () => {
 

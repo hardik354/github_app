@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { formatDate } from "../utils/functions";
-
+import React from "react";
 
 const LikesPage = () => {
 	const [likes, setLikes] = useState([]);

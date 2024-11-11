@@ -1,7 +1,7 @@
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { handleLoginWithGithub } from "../lib/function.js";
-
+import React from "react";
 const LoginPage = () => {
   return (
     <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0'>

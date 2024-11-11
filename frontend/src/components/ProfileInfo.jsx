@@ -5,7 +5,7 @@ import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
 import { formatMemberSince } from "../utils/functions";
 import LikeProfile from "./LikeProfile";
-
+import react from "react";
 const ProfileInfo = ({ userProfile }) => {
     const memberSince = userProfile ? formatMemberSince(userProfile.created_at) : "Unknown";
 
