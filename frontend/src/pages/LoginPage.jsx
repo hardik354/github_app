@@ -1,6 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
-// import { handleLoginWithGithub } from "../lib/function";
+import { handleLoginWithGithub } from "../lib/function.js";
 
 const LoginPage = () => {
   return (
@@ -14,7 +14,7 @@ const LoginPage = () => {
             className='text-white bg-[#323941] hover:bg-[#24292F]/90 focus:ring-4 
 						focus:outline-none focus:ring-[#24292F]/50 
               font-medium rounded-lg flex gap-2 p-2 items-center w-full text-center justify-center'
-          // onClick={handleLoginWithGithub}
+          onClick={handleLoginWithGithub}
           >
             <FaGithub className='w-5 h-5' />
             Login with Github
@@ -33,4 +33,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage
+export default LoginPage;

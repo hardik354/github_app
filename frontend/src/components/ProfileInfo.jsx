@@ -4,6 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
 import { formatMemberSince } from "../utils/functions";
+import LikeProfile from "./LikeProfile";
 
 const ProfileInfo = ({ userProfile }) => {
     const memberSince = userProfile ? formatMemberSince(userProfile.created_at) : "Unknown";
@@ -13,14 +14,13 @@ const ProfileInfo = ({ userProfile }) => {
             <div className='bg-glass rounded-lg p-4'>
                 <div className='flex gap-4 items-center'>
                     {/* User Avatar */}
-                    {userProfile && (
+                    
                         <a href={userProfile?.html_url} target='_blank' rel='noreferrer'>
                             <img src={userProfile?.avatar_url} className='rounded-md w-24 h-24 mb-2' alt='' />
                         </a>
-                    )}
                     {/* View on Github */}
                     <div className='flex gap-2 items-center flex-col'>
-                        {userProfile && (
+                    <LikeProfile userProfile={userProfile} />
                             <a
                                 href={userProfile?.html_url}
                                 target='_blank'
@@ -30,28 +30,27 @@ const ProfileInfo = ({ userProfile }) => {
                                 <FaEye size={16} />
                                 View on Github
                             </a>
-                        )}
                     </div>
                 </div>
 
                 {/* User Bio */}
-                {userProfile?.bio && (
+                {userProfile?.bio ? (
                     <div className='flex items-center gap-2'>
                         <TfiThought />
                         <p className='text-sm'>{userProfile.bio.substring(0, 60)}...</p>
                     </div>
-                )}
+                ): null}
 
                 {/* Location */}
-                {userProfile?.location && (
+                {userProfile?.location ? (
                     <div className='flex items-center gap-2'>
                         <IoLocationOutline />
                         {userProfile.location}
                     </div>
-                )}
+                ): null}
 
                 {/* Twitter Username */}
-                {userProfile?.twitter_username && (
+                {userProfile?.twitter_username ? (
                     <a
                         href={`https://twitter.com/${userProfile.twitter_username}`}
                         target='_blank'
@@ -61,7 +60,7 @@ const ProfileInfo = ({ userProfile }) => {
                         <FaXTwitter />
                         {userProfile.twitter_username}
                     </a>
-                )}
+                ): null}
 
                 {/* Member Since Date */}
                 <div className='my-2'>
@@ -86,12 +85,11 @@ const ProfileInfo = ({ userProfile }) => {
                 )}
 
                 {/* Username */}
-                {userProfile?.login && (
                     <div className='my-2'>
                         <p className='text-gray-600 font-bold text-sm'>Username</p>
                         <p>{userProfile.login}</p>
                     </div>
-                )}
+                
             </div>
 
             <div className='flex flex-wrap gap-2 mx-4'>

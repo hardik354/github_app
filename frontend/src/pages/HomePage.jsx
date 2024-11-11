@@ -17,23 +17,13 @@ const HomePage = () => {
   const getUserProfileAndRepos = useCallback(async (username = "hardik354") => {
     setLoading(true);
     try {
-      const userRes = await fetch(`https://api.github.com/users/${username}`, {
-        headers: {
-          authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY} `,
-        },
-      });
-
-      const userProfile = await userRes.json();
-      setUserProfile(userProfile);
-
-      const repoRes = await fetch(userProfile.repos_url);
-      const repos = await repoRes.json();
+      const res = await fetch(`/api/users/profile/${username}`);
+			const { repos, userProfile } = await res.json();
 
       repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      
       setRepos(repos);
-
-      console.log("user profile:", userProfile);
-      console.log("repos:", repos);
+      setUserProfile(userProfile);
 
       return { userProfile, repos };
     } catch (error) {
